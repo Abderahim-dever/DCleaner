@@ -1,5 +1,5 @@
 @echo off
-title Dever , Abderahim Tool
+title Dever Cleaner
 chcp 65001
 mode 102,30
 color 05
@@ -17,7 +17,6 @@ echo  └───────────────────────�
 echo.
 set /p userInput="   -› "
 
-:: الانتظار ثانيتين بعد الإدخال
 ping -n 2 127.0.0.1 > nul
 if "%userInput%"=="1" (
     echo Deleting temporary files...
@@ -27,11 +26,9 @@ if "%userInput%"=="1" (
         
     )
     pause
-    rem حذف محتويات %TEMP%
     del /q /f "%TEMP%\*.*"
     for /d %%p in ("%TEMP%\*") do rmdir "%%p" /s /q
 
-    rem حذف محتويات C:\Windows\Temp
     del /q /f "C:\Windows\Temp\*.*"
     for /d %%p in ("C:\Windows\Temp\*") do rmdir "%%p" /s /q
     rd /s /q C:\Windows\Prefetch
